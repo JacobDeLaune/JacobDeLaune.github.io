@@ -58,7 +58,15 @@ var buildings = [];
 }
             
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            var buildingHeight = 300;
+            var building;
+            for(var i=0;i<5;++i) {
+            building = draw.rect(75,buildingHeight,'DarkGrey','Black',1);
+            building.x = 200*i;
+            building.y = groundY-buildingHeight;
+            background.addChild(building);
+            buildings.push(building);
+}
             
             // TODO 4: Part 1 - Add a tree
             tree = draw.bitmap('img/tree.png');
@@ -80,13 +88,22 @@ var buildings = [];
             // TODO 4: Part 2 - Move the tree!
             tree.x = tree.x - 1;
             if(tree.x < -200) {
-            tree.x = canvasWidth;
-}
+                tree.x = canvasWidth;
+            }
             
             // TODO 5: Part 2 - Parallax
             
-
-        } // end of update function - DO NOT DELETE
+            for (var i = 0; i < buildings.length; i++){
+                var building = buildings[i];
+                building.name = "ex building number " + i;
+            }
+            building.x = building.x - 1;
+            if(building.x < -200) {
+                building.x = canvasWidth;
+            }
+            console.log(building);
+            
+         // end of update function - DO NOT DELETE
         
         
         
