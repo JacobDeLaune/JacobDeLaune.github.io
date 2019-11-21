@@ -1,7 +1,6 @@
 var background = function (window) {
     'use strict';
-var tree;
-var buildings = [];
+
     
     window.opspark = window.opspark || {};
     var draw = window.opspark.draw;
@@ -28,7 +27,8 @@ var buildings = [];
         var background;
         
         // ANIMATION VARIABLES HERE:
-        
+        var tree;
+        var buildings = [];        
      
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -51,22 +51,22 @@ var buildings = [];
             
             var circle;
             for(var i=0;i<100;i++) {
-            circle = draw.circle(3,'white','LightGray',2);
-            circle.x = canvasWidth*Math.random();
-            circle.y = groundY*Math.random();
-            background.addChild(circle);
-}
+                        circle = draw.circle(3,'white','LightGray',2);
+                        circle.x = canvasWidth*Math.random();
+                        circle.y = groundY*Math.random();
+                        background.addChild(circle);
+            }
             
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             var buildingHeight = 300;
             var building;
             for(var i=0;i<5;++i) {
-            building = draw.rect(75,buildingHeight,'DarkGrey','Black',1);
-            building.x = 200*i;
-            building.y = groundY-buildingHeight;
-            background.addChild(building);
-            buildings.push(building);
-}
+                        building = draw.rect(75,buildingHeight,'DarkGrey','Black',1);
+                        building.x = 200*i;
+                        building.y = groundY-buildingHeight;
+                        background.addChild(building);
+                        buildings.push(building);
+            }
             
             // TODO 4: Part 1 - Add a tree
             tree = draw.bitmap('img/tree.png');
@@ -95,13 +95,14 @@ var buildings = [];
             
             for (var i = 0; i < buildings.length; i++){
                 var building = buildings[i];
-                building.name = "ex building number " + i;
+
+                building.x = building.x - 1;
+                if(building.x < -200) {
+                    building.x = canvasWidth;
+                }
             }
-            building.x = building.x - 1;
-            if(building.x < -200) {
-                building.x = canvasWidth;
-            }
-            console.log(building);
+            
+        }
             
          // end of update function - DO NOT DELETE
         
